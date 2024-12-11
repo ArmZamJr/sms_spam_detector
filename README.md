@@ -16,8 +16,10 @@ text_clf.fit(X_train, y_train)```
 #sms_app = gr.Interface(fn=sms_prediction, inputs="text", outputs="text")
 interface = gr.Interface(
     fn=sms_prediction,
-    inputs="text",
-    outputs="text",
+    #inputs="text",
+    #outputs="text",
+    inputs=gr.Textbox(lines=5, label="What is the text message you want to test?"),
+    outputs=gr.Textbox(label="Our app has determined:"),
     title="SMS Spam Detection",
     description="Please enter an SMS message below to determine if it is spam or not."
 )
@@ -25,5 +27,5 @@ interface = gr.Interface(
 
     
 # Launch the app.
-sms_app.launch()
+interface.launch(share=True) 
 ```
